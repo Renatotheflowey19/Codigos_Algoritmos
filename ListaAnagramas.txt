@@ -1,0 +1,117 @@
+def poblar():
+    
+    lista = []
+    
+    while True:
+        
+        palabra1 = input()
+        
+        if palabra1 == "FIN":
+            
+            return lista
+            
+        palabra2 = input()
+            
+        tupla = palabra1,palabra2
+        
+        lista.append(tupla)
+        
+    return lista
+    
+def escribirLista(lista):
+    
+    for elem in lista:
+        
+        print(elem)
+
+def ListaMayusculas(lista):
+    
+    nuevaLista = []
+    
+    for elem in lista:
+        
+        elem1,elem2 = elem
+        
+        palabra1Mayus = elem1.upper()
+        
+        palabra2Mayus = elem2.upper()
+        
+        tupla = palabra1Mayus,palabra2Mayus
+        
+        nuevaLista.append(tupla)
+        
+    return nuevaLista
+    
+def sonAnagramas(pal1,pal2):
+    
+    if sorted(pal1) == sorted(pal2):
+        
+        return True
+    
+    return False
+    
+def mostrarAnagramas(lista):
+    
+    cont = 0
+    
+    nuevaLista = []
+    
+    for elem in lista:
+        
+        elem1,elem2 = elem
+        
+        if sonAnagramas(elem1,elem2):
+            
+            tupla = elem1,elem2
+            
+            nuevaLista.append(tupla)
+            
+            cont += 1
+    
+    print()
+    
+    if cont == 0:
+        
+        print("NO SE ENCONTRARON ANAGRAMAS EN LA LISTA!")
+        
+    else:
+        
+        print(f"TOTAL DE ANAGRAMAS ENCONTRADOS {cont}")
+        
+        print()
+
+        print("LISTA DE ANAGRAMAS ENCONTRADOS")    
+        
+        print()
+        
+        for k in nuevaLista:
+            
+            print(k)
+               
+#main
+ 
+listaPalabras = poblar()
+
+largoPalabras = len(listaPalabras)
+
+listaEnMayus = ListaMayusculas(listaPalabras)
+
+print(f"TOTAL PARES DE PALABRAS INGRESADAS : {largoPalabras}")
+
+print()
+
+print("LISTA DE PARES DE PALABRAS INGRESADAS")
+
+print()
+
+escribirLista(listaPalabras)
+
+print()
+
+print("LISTA DE PARES DE PALABRAS EN MAYUSCULAS")
+
+print()
+
+escribirLista(listaEnMayus)
+
+listaAnagramas = mostrarAnagramas(listaEnMayus)
