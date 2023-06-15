@@ -1,0 +1,80 @@
+def poblar():
+    
+    lista = []
+    
+    while True:
+        
+        dato = input()
+        
+        if dato == "FIN":
+            
+            break
+        
+        if dato.isdigit():
+            
+            if dato not in lista:
+                
+                lista.append(dato)
+                
+    return lista
+    
+    
+def esHipopar(numS):
+    
+    cont_Pares = 0
+    
+    num = int(numS)
+    
+    if num == 0:
+        
+        return True
+    
+    while num > 0:
+        
+        dig = num % 10
+        
+        if dig % 2 == 0:
+            
+            cont_Pares += 1
+            
+        num //= 10
+        
+    if cont_Pares >= 1:
+        
+        return True
+        
+    return False
+    
+def listaHipopar(lista):
+    
+    nuevaLista = []
+    
+    for elem in lista:
+        
+        if esHipopar(elem):
+            
+            nuevaLista.append(int(elem))
+            
+    listaOrdenada = sorted(nuevaLista,reverse = True)
+            
+    return listaOrdenada
+
+#main
+
+listaDatos = poblar()
+
+print(f"lista de datos = {listaDatos}")
+
+listaHipopares = listaHipopar(listaDatos)
+
+print()
+
+print(f"lista de hipopares - ordenado de mayor a menor = {listaHipopares}")
+
+print()
+
+largolista = len(listaDatos)
+
+largoListaHipopares = len(listaHipopares)
+
+print(f"RESUMEN : Cantidad de Hipopares / Cantidad de leídos = {largoListaHipopares} / {largolista}")
